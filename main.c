@@ -71,5 +71,6 @@ int main() {
     // Nota: Tabela original tem "0.5 45 sen 2^+". Parser espera espaços.
     executarTeste(9, "0.5 45 sen 2 ^ +", "sen(45)^2+0.5", "1");
 
+    system("pause"); // caso queira abrir pelo proprio .exe
     return 0;
 }
