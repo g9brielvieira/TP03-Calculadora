@@ -25,7 +25,7 @@ typedef struct NodeStr {
 } NodeStr;
 
 // funcoes aux da pilha
-
+// revisar essa parte depois
 void pushVal(NodeVal **top, float v) {
     NodeVal *novo = (NodeVal*)malloc(sizeof(NodeVal));
     if (novo) {
@@ -72,7 +72,7 @@ int getPrecedence(char *op) {
     if (strcmp(op, "^") == 0) return 3;
     if (strcmp(op, "*") == 0 || strcmp(op, "/") == 0 || strcmp(op, "%") == 0) return 2;
     if (strcmp(op, "+") == 0 || strcmp(op, "-") == 0) return 1;
-    return 4; // Operandos e funções unárias têm prioridade máxima (já resolvidos)
+    return 4; // Operandos e funções unárias têm prioridade máxim
 }
 
 int isOperator(char *token) {
@@ -149,11 +149,11 @@ char *getFormaInFixa(char *Str) {
     while (token != NULL) {
         if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1])) || 
             (!isOperator(token) && !isFunction(token))) {
-            // É operando (número ou variável não mapeada)
-            pushStr(&pilha, token, 4); // Precedência máxima (não precisa de parenteses isolado)
+            // É operando (número ou variável n mapeada)
+            pushStr(&pilha, token, 4); // precedencia maxima (não precisa de parenteses isolado)
         } 
         else if (isFunction(token)) {
-            // Função unária: func(A)
+            // função unaria: func(A)
             int precA;
             char *A = popStr(&pilha, &precA);
             if (!A) { free(copia); return NULL; } // Erro de expressão mal formada
